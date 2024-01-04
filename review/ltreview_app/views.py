@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 class SignUpView(generic.CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
-    template_name = 'registration/signup.html'
+    template_name = 'signup.html'
 
 def ticket_view(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
