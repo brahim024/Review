@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Inscription</title>
+    <title>Connexion</title>
     <!-- Ajoutez ici des liens vers vos feuilles de style CSS -->
 </head>
 <body>
     <main>
-        <h1>Inscription</h1>
+        <h1>Connexion</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">S'inscrire</button>
+            <button type="submit">Se connecter</button>
         </form>
     </main>
 </body>
