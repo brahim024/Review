@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractUser
 
 class Ticket(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(default='Description par défaut')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     time_created = models.DateTimeField(auto_now_add=True)
