@@ -10,7 +10,7 @@ class Ticket(models.Model):
     description = models.TextField(default='Description par défaut')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
-    time_created = models.DateTimeField(auto_now_add=True, default=timezone.now)
+     time_created = models.DateTimeField(auto_now_add=True)
 
 
 class Review(models.Model):
@@ -22,7 +22,7 @@ class Review(models.Model):
     body = models.CharField(max_length=8192, blank=True)
     user = models.ForeignKey(
         to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    time_created = models.DateTimeField(auto_now_add=True, default=timezone.now)
+     time_created = models.DateTimeField(auto_now_add=True)
 
 
 class UserFollows(models.Model):
