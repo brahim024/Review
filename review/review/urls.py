@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from ltreview_app.views import SignUpView
 from django.contrib.auth.views import LoginView, LogoutView
-from . import views
+from ltreview_app import views
 
 
 urlpatterns = [
