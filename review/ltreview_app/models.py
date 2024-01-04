@@ -6,11 +6,11 @@ from django.utils import timezone
 
 
 class Ticket(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, default='Titre par défaut')
     description = models.TextField(default='Description par défaut')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
-     time_created = models.DateTimeField(auto_now_add=True)
+    time_created = models.DateTimeField(default=timezone.now)
 
 
 class Review(models.Model):
@@ -18,11 +18,11 @@ class Review(models.Model):
     rating = models.PositiveSmallIntegerField(
         # validates that rating must be between 0 and 5
         validators=[MinValueValidator(0), MaxValueValidator(5)])
-    headline = models.CharField(max_length=128)
+    headline = models.CharField(max_length=128, default='Titre de la critique')
     body = models.CharField(max_length=8192, blank=True)
     user = models.ForeignKey(
         to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-     time_created = models.DateTimeField(auto_now_add=True)
+    time_created = models.DateTimeField(default=timezone.now)
 
 
 class UserFollows(models.Model):
