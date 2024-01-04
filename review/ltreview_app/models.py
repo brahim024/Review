@@ -23,12 +23,15 @@ class Review(models.Model):
 
 
 class UserFollows(models.Model):
-    # Your UserFollows model definition goes here
+    # Utilisateur qui suit
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='following')
+
+    # Utilisateur suivi
+    followed_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='followers')
 
     class Meta:
-        # ensures we don't get multiple UserFollows instances
-        # for unique user-user_followed pairs
-        unique_together = ('user', 'followed_user', )
+        # Assure qu'un utilisateur ne peut suivre un autre utilisateur qu'une seule fois
+        unique_together = ('user', 'followed_user')
 
 class CustomUser(AbstractUser):
     # Champ supplémentaire : livre préféré de l'utilisateur
