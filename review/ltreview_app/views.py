@@ -6,6 +6,7 @@ from .forms import CustomUserCreationForm
 from .models import Ticket
 from .models import Review
 from .models import UserFollows
+from django.shortcuts import get_object_or_404
 
 class SignUpView(generic.CreateView):
     form_class = CustomUserCreationForm
@@ -13,7 +14,7 @@ class SignUpView(generic.CreateView):
     template_name = 'registration/signup.html'
 
 def ticket_view(request, ticket_id):
-    ticket = Ticket.objects.get(id=ticket_id)
+    ticket = get_object_or_404(Ticket, id=ticket_id)
     return render(request, 'ticket.html', {'ticket': ticket})
 
 def review_view(request, review_id):
