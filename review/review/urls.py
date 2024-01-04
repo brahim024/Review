@@ -19,13 +19,16 @@ from django.urls import path
 from ltreview_app.views import SignUpView
 from django.contrib.auth.views import LoginView, LogoutView
 
-urlpatterns = [
-    path('signup/', SignUpView.as_view(), name='signup'),
-    path('login/', LoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
-]
+# urlpatterns = [
+#     path('signup/', SignUpView.as_view(), name='signup'),
+#     path('login/', LoginView.as_view(), name='login'),
+#     path('logout/', LogoutView.as_view(), name='logout'),
+# ]
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('signup/', SignUpView.as_view(), name='signup'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]
