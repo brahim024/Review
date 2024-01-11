@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ticket</title>
+    <title>Ajouter un Ticket</title>
 </head>
 <body>
-    <h1>{{ ticket.title }}</h1>
-    <p>{{ ticket.description }}</p>
-    {% if ticket.image %}
-        <img src="{{ ticket.image.url }}" alt="Image">
-    {% endif %}
-    <p>Créé par: {{ ticket.user.username }}</p>
-    <p>Date de création: {{ ticket.time_created }}</p>
+    <h1>Ajouter un Ticket</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="title">Titre:</label><br>
+        <input type="text" id="title" name="title" required><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" required></textarea><br>
+        <label for="image">Image (optionnel):</label><br>
+        <input type="file" id="image" name="image"><br>
+        <input type="submit" value="Créer un Ticket">
+    </form>
 </body>
 </html>
